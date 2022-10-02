@@ -9,7 +9,6 @@
 * This is a microwave program.
 */
 
-import java.util.Scanner;
 import java.io.Console;
 
 /**
@@ -38,7 +37,19 @@ final class Microwave {
      * This is the variable for soup.
      */
     public static final String SOUP = "soup";
-     /**
+    /**
+     * This is one subs cook time.
+     */
+    public static final double SUBTIME = 60;
+    /**
+     * This is one pizzas cook time.
+     */
+    public static final double PIZZATIME = 45;
+    /**
+     * This is one soups cook time.
+     */
+    public static final double SOUPTIME = 105;
+    /**
      * This is the variable for one.
      */
     public static final double ONE = 1;
@@ -50,6 +61,10 @@ final class Microwave {
      * This is the variable for three.
      */
     public static final double THREE = 3;
+    /**
+     * This is the variable for 60 seconds.
+     */
+    public static final double SIXTY = 60;
 
     /**
     * Prevent instantiation.
@@ -82,7 +97,8 @@ final class Microwave {
         final Console console = System.console();
         final String userInput = console.readLine(
             "Are you reheating a sub, pizza or soup : ");
-        final String quantityString = console.readLine("How many " + userInput + "s would you like to reheat (max 3) : ");
+        final String quantityString = console.readLine("How many "
+            + userInput + "s would you like to reheat (max 3) : ");
         final double quantity = Integer.valueOf(quantityString);
 
         // Catch invalid inputs.
@@ -91,11 +107,11 @@ final class Microwave {
 
             // Determines what item is inputted
             if (userInput.equals(SUB)) {
-                cookTime = 60;
+                cookTime = SUBTIME;
             } else if (userInput.equals(PIZZA)) {
-                cookTime = 45;
+                cookTime = PIZZATIME;
             } else if (userInput.equals(SOUP)) {
-                cookTime = 105;
+                cookTime = SOUPTIME;
             }
 
             // Calculate time required in microwave
@@ -110,11 +126,12 @@ final class Microwave {
                 }
 
                 // Calculate time in minutes and seconds
-                seconds = finalTime / 60;
+                seconds = finalTime / SIXTY;
                 minutes = Math.floor(seconds);
-                seconds = (seconds - minutes) * 60;
-                System.out.println("That will take " + minutes +
-                  " minute(s) and " + seconds + " seconds in the microwave.");
+                seconds = (seconds - minutes) * SIXTY;
+                System.out.println("That will take "
+                    + minutes + " minute(s) and " + seconds
+                    + " seconds in the microwave.");
 
             // Catches invalid number inputs
             } else {
